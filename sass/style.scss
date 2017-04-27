@@ -1,0 +1,210 @@
+/*	Import Google Font	*/
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
+
+/*	Basic CSS normalize	*/
+*,
+*::before,
+*::after {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+/*	Prevent the display from being wider than the browser width, no horizontal scroll 	*/
+
+html {
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  padding-top: 60px;
+}
+
+@keyframes fadeIn {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
+.fade-in {
+  animation: fadeIn .5s forwards;
+}
+
+.top-bar {
+  position: fixed;
+  top: 0px;
+  width: 100vw;
+  color: #fff;
+  background: #111;
+  height: 50px;
+  z-index: 100;
+  /* Make sure .top-bar is always in front */
+}
+
+.top-bar h1 {
+  text-align: center;
+  /* With the line height the same as the top-bar height the text will be vertically centered */
+  line-height: 50px;
+  font-size: 40px;
+}
+
+#add-note-btn {
+  position: absolute;
+  right: 10px;
+  top: 0px;
+  font-size: 50px;
+  line-height: 50px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: .5s;
+}
+
+@keyframes twist {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-135deg);
+  }
+}
+/* Turn the + into an X by rotating it*/
+
+.twist {
+  transform: rotate(-135deg);
+  animation: twist .5s;
+}
+
+/* Animation to fade and drop in the add-note-screen*/
+
+@keyframes fade-in-down {
+  0% {
+    opacity: 0;
+    top: -110vh;
+  }
+  100% {
+    opacity: 1;
+    top: 50px;
+  }
+}
+
+.note-screen-in {
+  animation: fade-in-down .5s forwards;
+}
+
+@keyframes fade-up-out {
+  0% {opacity:1;
+  top: 50px;}
+  100% {opacity:0;
+  top: -110vh;}
+}
+
+.note-screen-out {
+  animation: fade-up-out .5s forwards;
+}
+
+#add-note-screen {
+  background: white;
+  position: fixed;
+  padding-top: 10px;
+  top: -110vh;
+  /* makes sure the screen fills the entire window except top-bar */
+  height: 100vh;
+  width: 100%;
+  /* This puts the add note btn on the right side of the container */
+  text-align: right;
+}
+
+#add-note-screen h1 {
+  text-align: center;
+}
+
+#add-note-screen textarea {
+  width: 90%;
+  display: block;
+  margin: auto;
+  height: 50vh;
+  text-align: left;
+  padding: 10px;
+  box-sizing: border-box;
+  background: yellow;
+  font-family: monospace;
+  font-size: 24px;
+}
+
+#add-note-screen button {
+  margin: 10px 10% 0 0;
+  cursor: pointer;
+  font-size: 20px;
+  padding: 10px;
+  position: relative;
+  top: 0px;
+  left: 0px;
+  border: 3px solid black;
+  border-radius: 5px;
+  transition: .5s;
+  box-shadow: 5px 5px 0px 0px rgba(0, 0, 0, 0.7);
+}
+
+#add-note-screen button:hover {
+  box-shadow: 8px 8px 3px 0px rgba(0, 0, 0, 0.5);
+  top: -3px;
+  left: -3px;
+}
+
+#add-note-screen button:active {
+  box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 0.9);
+  top: 3px;
+  left: 3px;
+}
+
+.note {
+  display: inline-block;
+  width: 31%;
+  margin: 1%;
+  border: 2px solid black;
+  background: yellow;
+  color: black;
+  min-height: 150px;
+  padding: 5px;
+  font-size: 24px;
+  padding-right: 50px;
+  position: relative;
+  /* preserve the whitespace that was eneter in by user i.e. linebreaks, multiple spaces, etc.. */
+  white-space: pre-wrap;
+  /* make sure contents wraps in container even if it is a single long word */
+  word-break: break-all;
+  vertical-align: top;
+  font-family: monospace;
+}
+
+@media screen and (max-width: 1000px) {
+  .note {
+    display: inline-block;
+    width: 48%;
+    margin: 1%;
+  }
+}
+
+@media screen and (max-width: 620px) {
+  .note {
+    display: block;
+    width: 95%;
+    margin: 5px auto;
+  }
+}
+
+.note .del-note {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  color: red;
+  border: 2px solid red;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 0px 8px;
+  cursor: pointer;
+  font-weight: bold;
+  text-transform: capitalize;
+  font-size: 30px;
+}
