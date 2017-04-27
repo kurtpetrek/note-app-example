@@ -8,4 +8,4 @@ This is an example with comments on how to build a basic note taking application
 * Button to easily insert { } for taking notes on CSS and JS
 * CSS Animations
 
-For a live demo go to http://kurtpetrek.github.io/note-app-example
+For a live demo go to https://www.kurtpetrek.github.io/note-app-example
